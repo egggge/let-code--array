@@ -1,1 +1,27 @@
-#自己最先的思路就是两个嵌套的循环
+#自己最先的思路,找不到终止的方法
+class Solution {
+public:
+    bool isOneBitCharacter(vector<int>& bits) {
+        int i=0;
+        while(i<bits.size()){
+            if(bits[i]==0) i++;
+            else i=i+2;
+        }
+        
+    }
+};
+
+
+正解：
+class Solution {
+public:
+    bool isOneBitCharacter(vector<int>& b) {
+        bool c;
+        for (int i = 0; i < b.size();) {
+            if (b[i]) c = 0, i+=2;
+            else c = 1, ++i;
+        }
+        return c;
+    }
+};
+遇见1便是false。自己就是找不出终止条件。。。。。
