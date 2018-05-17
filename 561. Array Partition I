@@ -1,0 +1,14 @@
+#思路：首先排序，俩俩一对，选取最小的那一个
+class Solution {
+public:
+    int arrayPairSum(vector<int>& nums) {
+        #按照升序排序
+        sort(nums.begin(),nums.end());
+        #一定要注意初始呀
+        int i,sum=0;
+        for(i=0;i<nums.size();i+=2){
+            sum+=nums[i];
+        }
+        return sum;
+    }
+};
