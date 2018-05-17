@@ -1,0 +1,38 @@
+#思路：遍历每个数字x，对于x左边，找比x小的最小值，记录；对于x右边，找比x大的最大值，记录；最后比较选出最大的
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int i,max=0,min=0,len=prices.size();
+        int temp1=0,temp2=0,result=0;
+        vector<int>test;
+        for(i=0;i<len;i++){
+            #如何使用这个方法找到那个数组的最大值
+            max=*max_element(prices[i], prices.end());
+            min=*min_element(prices,prices[i]);
+            temp1=price[i]-min;
+            temp2=max-price[2];
+            test.push_back(temp1);
+            test.push_back(temp2);
+            result=max_elemen(test.begin(), test.end());
+            
+            
+        }
+        return result;
+    }
+};
+
+#专业答案
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int minum=INT_MAX;
+        int maxnum=0;
+        for(int i=0;i<prices.size();i++){
+            minum=min(minum,prices[i]);
+            maxnum=max(maxnum,prices[i]-minum);
+            
+        }
+       return maxnum;    
+    }
+};
+#缺少的还是深度思考，感觉自己想问题的层次有点低哟
