@@ -1,0 +1,37 @@
+#自己的思路，嵌套循环
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+        int len=nums.size();
+        for(int i=0;i<len;i++){
+            for(int j=i+1;j<len;j++){
+                if(nums[j]==nums[i]) return 1;
+            }
+        }
+        return 0;
+    }
+};
+#但是超时了。。。第二种思路，先排序。但是，出错。比如一个数组只有0一个数组。
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+        int len=nums.size();
+        sort(nums.begin(),nums.end());
+        for(int i=0;i<len;i++){
+            if(nums[i]==nums[i+1]) return 1;
+        }
+        return 0;
+    }
+};
+#正解。考虑只有一个数的数组
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+        int len=nums.size();
+        sort(nums.begin(),nums.end());
+        for(int i=0;i<len-1;i++){
+            if(nums[i]==nums[i+1]) return 1;
+        }
+        return 0;
+    }
+};
