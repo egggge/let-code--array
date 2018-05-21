@@ -1,0 +1,17 @@
+#尝试了不知道多少次了，失败失败。感觉自己的智商和思维不行呀。。。。
+#专业答案，只考虑哪些可以成为1
+class Solution {
+public:
+    bool canPlaceFlowers(vector<int>& bed, int n) {
+        for (int i = 0; i < bed.size(); i++) {
+            if (!bed[i] && (i == 0 || !bed[i - 1]) && (i == bed.size() - 1 || !bed[i + 1])) {
+                bed[i] = 1;
+                n--;
+            }
+        }
+        return n <= 0;
+
+  
+    }
+};
+#不过有个疑问，超过容器的长度，输出时什么
