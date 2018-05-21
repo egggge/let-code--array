@@ -1,0 +1,31 @@
+#自己的思路，在选择一个之后，继续判断下面的。但是结果超时了
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int minum1=INT_MAX,minum2=INT_MAX;
+        int maxnum1=0,maxnum2=0,result=0,sum=0;
+        for(int i=0;i<prices.size();i++){
+            minum1=min(minum1,prices[i]);
+            maxnum2=max(maxnum2,prices[i]-minum1);
+            while(maxnum2!=0){
+                for(int j=i+1;j<prices.size();j++){
+                    minum2=min(minum2,prices[j]);
+                    maxnum2=max(maxnum2,prices[j]-minum2); 
+               }
+            }
+            sum=maxnum1+maxnum2;
+            result=max(result,sum);
+        }
+       return result;    
+    
+        
+    }
+};
+
+#参考了一下答案，只能说数学真的很神奇。。6-3=（4-3）+（5-4）+（6-5）.。。。
+int maxProfit(vector<int> &prices) {
+    int ret = 0;
+    for (size_t p = 1; p < prices.size(); ++p) 
+      ret += max(prices[p] - prices[p - 1], 0);    
+    return ret;
+}
