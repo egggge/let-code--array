@@ -1,0 +1,21 @@
+#问题描述：找出频率最高的数字，然后找到其头和尾，计算之间的距离，找出最小距离
+#位置和数字都需要记录，所以使用哈希表
+class Solution {
+public:
+    int findShortestSubArray(vector<int>& nums) {
+        unordered_map<int,vector<int>> mp;//使用vector来存储相同元素的不同同位置
+        for(int i=0;i<nums.size();i++) mp[nums[i]].push_back(i);
+        int degree=0;
+        for(auto it=mp.begin();it!=mp.end();it++) degree=max(degree,int(it->second.size()));
+        int shortest=nums.size();
+        for(auto it=mp.begin();it!=mp.end();it++)
+        {
+            //频率相同的两个数，找出最短的那个
+            if(it->second.size()==degree)
+            {
+                shortest=min(shortest,it->second.back()-it->second[0]+1);
+            }
+        }
+        return shortest;
+    }
+};
