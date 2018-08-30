@@ -1,0 +1,28 @@
+题目：Input: [1,2,3]
+Output: [1,2,4]
+Explanation: The array represents the integer 123.
+这个题目的主要问题在于当最后一位出现9。只要最后一位不出现9那么直接加一位即可。
+class Solution {
+public:
+    vector<int> plusOne(vector<int>& digits){
+	    int n = digits.size();
+	    for (int i = n - 1; i >= 0; --i)
+	   {
+		    if (digits[i] == 9)
+		  {
+			    digits[i] = 0;
+		  }
+		   else
+		  {
+			    digits[i]++;
+			     return digits;
+		  }
+	 }
+   #考虑当出现99的情况
+		digits[0] = 1;
+		digits.push_back(0);
+        return digits;
+    }
+};
+
+对于容器添加数字直接
